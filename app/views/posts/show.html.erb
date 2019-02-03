@@ -4,9 +4,10 @@
 
 <p>
 Submitted <%= time_ago_in_words(@post.created_at)%> Ago
+    <%if user_signed_in?%>
 |  <%=link_to 'Edit',edit_post_path(@post)%>
 |  <%=link_to 'Delete',post_path(@post),method: :delete,data:{confirm:'Are you sure?'}%>
-
+      <%end%>
 </p>
 
 <p>
@@ -18,6 +19,6 @@ Submitted <%= time_ago_in_words(@post.created_at)%> Ago
 
  		<h3>Add a comment:</h3>
  		<%= render "comments/form" %>
-    
+
  	</div>
 </p>

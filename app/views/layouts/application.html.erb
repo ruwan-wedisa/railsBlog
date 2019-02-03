@@ -35,11 +35,14 @@
       </ul>
     </div>
 
+<% if user_signed_in?%>
     <div class="content">
       <div class="button">
         <button type="button" name="button"><%= link_to "New Post",new_post_path%></button>
-                <button type="button" name="button">Log Out</button>
+        <button type="button" name="button">							<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li></button>
       </div>
+    <%end%>
+
 
       <% flash.each do|name,msg| %>
       <%=content_tag(:div,msg,class:"alert")%>
