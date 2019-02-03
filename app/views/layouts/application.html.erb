@@ -10,11 +10,22 @@
   </head>
 
   <body>
+    <div class="Title">
+      <% if current_page?(root_path)%>
+      <h2>All Posts</h2>
+      <% elsif current_page?(about_path)%>
+      <h2>About Page</h2>
+      <%= link_to "Back to All Posts",root_path%>
+      <% else%>
+      <%= link_to "Back to All Posts",root_path%>
+      <%end%>
+
+    </div>
     <div class="side">
       <ul>
         <li>Website</li>
         <li><%=link_to "Blog",root_path%></li>
-        <li>About</li>
+        <li><%=link_to "About",about_path %></li>
       </ul>
 
       <ul>
