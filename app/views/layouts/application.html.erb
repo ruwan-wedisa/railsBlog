@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
     <div class="Title">
       <% if current_page?(root_path)%>
       <h2>All Posts</h2>
@@ -41,6 +42,11 @@
         <button type="button" name="button"><%= link_to "New Post",new_post_path%></button>
         <button type="button" name="button">							<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li></button>
       </div>
+<% else%>
+      <ul class="nav navbar-nav pull-right">
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            </ul>
     <%end%>
 
 
