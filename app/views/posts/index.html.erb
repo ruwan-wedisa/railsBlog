@@ -1,6 +1,20 @@
-<% @posts.each do |post| %>
-  <div class="post">
-    <h2><%= link_to post.title,post %></h2>
-    <p><%=post.created_at.strftime("%B.%d.%Y")%></p>
+<div class="container">
+  <div class="row">
+  <!-- Example row of columns -->
+  <% @posts.each do |post| %>
+
+
+      <div class="col-md-4">
+      <h2><%= link_to post.title,post %></h2>
+      <p><%= post.body %></p>
+      <p><%=post.created_at.strftime("%B.%d.%Y")%></p>
+
+
+      <p><%= link_to 'View Details',post,class:"btn btn-secondary"%></p>
+      </div>
+
+  <%end%>
   </div>
-<%end%>
+  <hr>
+
+</div> <!-- /container -->

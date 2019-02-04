@@ -1,8 +1,11 @@
+<div class="container">
+
+
 <h1>
-<%= @post.title%>
+<strong><%= @post.title%></strong>
 </h1>
 
-<p>
+<p style="color:blue" >
 Submitted <%= time_ago_in_words(@post.created_at)%> Ago
     <%if user_signed_in?%>
 |  <%=link_to 'Edit',edit_post_path(@post)%>
@@ -12,13 +15,15 @@ Submitted <%= time_ago_in_words(@post.created_at)%> Ago
 
 <p>
  <%= @post.body%>
-
- <div id="comments">
- 		<h2><%= @post.comments.count %> Comments</h2>
+<hr>
+ <div id="comments" >
+ 		<h2 style="color:blue"><%= @post.comments.count %> Comments</h2>
  		<%= render @post.comments %>
-
+    <hr>
  		<h3>Add a comment:</h3>
  		<%= render "comments/form" %>
 
  	</div>
 </p>
+
+</div>

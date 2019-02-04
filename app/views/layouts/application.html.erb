@@ -7,54 +7,89 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <div class="Title">
-      <% if current_page?(root_path)%>
-      <h2>All Posts</h2>
-      <% elsif current_page?(about_path)%>
-      <h2>About Page</h2>
-      <%= link_to "Back to All Posts",root_path%>
-      <% else%>
-      <%= link_to "Back to All Posts",root_path%>
-      <%end%>
 
-    </div>
-    <div class="side">
-      <ul>
-        <li>Website</li>
-        <li><%=link_to "Blog",root_path%></li>
-        <li><%=link_to "About",about_path %></li>
-      </ul>
-
-      <ul>
-        <li><a href="http://www.Twitter.com">Twitter</a></li>
-        <li><a href="http://www.Facebook.com">Facebook</a></li>
-        <li><a href="http://www.Github.com">Github</a></li>
-      </ul>
-    </div>
-
-<% if user_signed_in?%>
-    <div class="content">
-      <div class="button">
-        <button type="button" name="button"><%= link_to "New Post",new_post_path%></button>
-        <button type="button" name="button">							<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li></button>
-      </div>
-<% else%>
-      <ul class="nav navbar-nav pull-right">
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign in', new_user_session_path %></li>
-            </ul>
+  <div class="navbar-brand">
+    <% if current_page?(root_path)%>
+    All Posts
+    <% elsif current_page?(about_path)%>
+    About Page
+    <% else%>
+    <%= link_to "Back",root_path%>
     <%end%>
+
+  </div>
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%=link_to "Blog",root_path,class: "nav-link" %> <span class="sr-only">(current)</span>
+      </li>
+
+      <li class="nav-item active">
+        <%=link_to "About",about_path,class: "nav-link" %> <span class="sr-only">(current)</span>
+      </li>
+
+
+
+    </ul>
+
+
+
+  <% if user_signed_in?%>
+    <form class="form-inline my-2 my-lg-0">
+      <%= link_to "New Post",new_post_path,class:"btn btn-outline-success my-2 my-sm-0"%>
+    </form> &nbsp;
+    <form class="form-inline my-2 my-lg-0">
+      <%= link_to 'Sign out' ,destroy_user_session_path, :method => :delete,class:"btn btn-outline-success my-2 my-sm-0" %>
+    </form>
+
+  <% else%>
+  <form class="form-inline my-2 my-lg-0">
+    <%= link_to "Sign up",new_user_registration_path,class:"btn btn-outline-success my-2 my-sm-0"%>
+  </form> &nbsp;
+  <form class="form-inline my-2 my-lg-0">
+    <%= link_to 'Sign in', new_user_session_path,class:"btn btn-outline-success my-2 my-sm-0" %>
+  </form>
+  <%end%>
+
+
+  </div>
+</nav>
+  <% if current_page?(root_path)%>
+<div class="jumbotron">
+       <div class="container">
+         <h1 class="display-3">Rails Blog Page!</h1>
+         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+       </div>
+     </div>
+
+
+<%end%>
+
+
+
+
 
 
       <% flash.each do|name,msg| %>
       <%=content_tag(:div,msg,class:"alert")%>
       <%end%>
-          <%= yield %>
-    </div>
+
+
+  <%= yield %>
+
 
   </body>
 </html>
